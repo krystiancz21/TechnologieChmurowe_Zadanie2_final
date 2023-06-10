@@ -63,3 +63,11 @@ jobs:
             tag_name: ${{ steps.versioning.outputs.version }}
             release_name: ${{ steps.versioning.outputs.version }}
             prerelease: true
+      - name: Scan Docker image 🐳
+        uses: snyk/actions/docker@master
+        continue-on-error: true
+        with:
+          image: ghcr.io/${{ github.repository_owner }}/app:${{ steps.increment_version.outputs.new_version }}
+          args: --file=Dockerfile --severity-threshold=high,critical --sarif-file-output=snyk.sarif
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
