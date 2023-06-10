@@ -68,7 +68,7 @@ jobs:
         uses: snyk/actions/docker@master
         continue-on-error: true
         with:
-          image: ghcr.io/${{ github.repository_owner }}/app:${{ steps.versioning.outputs.version }}
+          image: ghcr.io/${{ github.repository_owner }}/tchzadanie2img:${{ steps.versioning.outputs.version }}
           args: --file=Dockerfile --severity-threshold=critical --sarif-file-output=snyk.sarif
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}

@@ -8,6 +8,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Krystian Czapla Ti 6.1
+          10.06.2023
         </p>
         <a
           className="App-link"
